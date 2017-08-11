@@ -1,25 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Настроение</title>
-  <script id="quotes_json" type="application/json">
-    [
-      {
-        "phrase": "Кукурузные хлопья - теперь без асбеста!",
-        "signature": "©Неизвестный маркетолог"
-      },
-      {
-        "phrase": "Собираюсь жить вечно, пока всё идёт нормально"
-      },
-      {
-        "phrase": "Вывеска над кафе — '\u003cМы открылись\u003e'. Что-то не так. Где же '\u003c/Мы открылись\u003e'?"
-      },
-      {
-        "phrase": "Если ты будешь усердно работать по 8 часов в день, то обязательно станешь боссом и начнешь работать по 12"
+    <meta charset="utf-8">
+    <title>Настроение</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+
+    <style>
+    /! body { background: url(); } !/
+    </style>
+
+
+    <script id="quotes_json" type="application/json">
+        [
+            {
+                "phrase": " Кукурузные хлопья - теперь без асбеста! ",
+                "signature": "©Неизвестный маркетолог"
+            },
+            {
+                "phrase": "Собираюсь жить вечно, пока всё идёт нормально. "
+            },
+            {
+                "phrase": " Вывеска над кафе — '\u003cМы открылись\u003e'. Что-то не так. Где же '\u003c/Мы открылись\u003e'? "
+            },
+            {
+                "phrase": "Если ты будешь усердно работать по 8 часов в день, то обязательно станешь боссом и начнешь работать по 12"
+            },
+            {   "phrase": "",
+                "signature": ""
+            }
+        ]
+    </script>
+
+    <style>
+      .outer: before {
+        display: inline - block;
+        height: 100%;
+        vertical - align: middle;
       }
-    ]
-  </script>
+
+      .inner {
+        display: inline-block;
+        vertical - align: middle;
+        text-align: center;
+        margin: auto;
+      }
+
+      .center {
+        text-align:center
+      }
+
+    </style>
+
+
 </head>
 <body>
+
+    <div class="quote-background-table">
+      <div class="quote-background-cell">
+        <div class="quote-background">
+          <div class="quote-container">
+            <span class="quote-text" id="js-phrase"></span>
+            <span class="quote-text" id="js-signature"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        var jsonQuotes = document.getElementById("quotes_json");
+        var jsonParseContent = JSON.parse(quotes_json.textContent);
+        var contentLength = jsonParseContent.length;
+
+
+        function getRandomNumber() {
+            return Math.floor(Math.random() * (contentLength - 0)) + 0;
+        }
+
+        var randomNumber = getRandomNumber();
+
+        function getObjectArray(jsonParseContent, randomNumber) {
+            var quote = jsonParseContent[randomNumber];
+            var phrase = quote["phrase"];
+            var signature = quote["signature"];
+
+            if (typeof signature === "undefined") {
+                signature = "";
+            } else {
+                signature = "- " + signature;
+            }
+
+            var arrayQuote = [phrase, signature]
+
+            return arrayQuote;
+            }
+
+        report = getObjectArray(jsonParseContent, randomNumber);
+
+        function addQuote(report) {
+            alert(report);
+            document.getElementById("js-phrase").textContent = report[0];
+            document.getElementById("js-signature").TextContent = report[1];
+        }
+
+        addQuote(report);
+     </script>
+
+
+
 </body>
 </html>
