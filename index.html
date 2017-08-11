@@ -3,54 +3,54 @@
 <head>
     <meta charset="utf-8">
     <title>Настроение</title>
+    <link href="static/img/favicon.ico" rel="shortcut icon">
+    <link href="static/css/main.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-
-    <style>
-    /! body { background: url(); } !/
-    </style>
-
-
     <script id="quotes_json" type="application/json">
         [
             {
                 "phrase": " Кукурузные хлопья - теперь без асбеста! ",
-                "signature": "©Неизвестный маркетолог"
+                "signature": " ©Неизвестный маркетолог "
             },
             {
-                "phrase": "Собираюсь жить вечно, пока всё идёт нормально. "
+                "phrase": " Собираюсь жить вечно, пока всё идёт нормально. "
             },
             {
                 "phrase": " Вывеска над кафе — '\u003cМы открылись\u003e'. Что-то не так. Где же '\u003c/Мы открылись\u003e'? "
             },
             {
-                "phrase": "Если ты будешь усердно работать по 8 часов в день, то обязательно станешь боссом и начнешь работать по 12"
+                "phrase": " Если ты будешь усердно работать по 8 часов в день, то обязательно станешь боссом и начнешь работать по 12! "
             },
-            {   "phrase": "",
-                "signature": ""
+            {
+                "phrase": " Мне двадцать с лишним лет. Вообще, все годы после двадцати-лишние. "
+            },
+            {
+                "phrase": " Мы рождаемся с криком, умираем со стоном. Остаётся только жить со смехом. ",
+                "signature": " Виктор Гюго. "
+            },
+            {
+                "phrase": " Если вы нашли женщину своей мечты — с остальными мечтами можете уже распрощаться. "
+            },
+            {
+                "phrase": " Извините, что я говорю, когда вы перебиваете. "
+            },
+            {
+                "phrase": " Самое плохое в ничегонеделанье - то, что нельзя всё бросить и пойти отдохнуть. "
+            },
+            {
+                "phrase": " Очередь в пляжный туалет - это место, где собираются приличные люди. "
+            },
+            {
+                "phrase": " Как я вас узнаю? В чем Вы будете? - В пальто, в печали и в говно. "
+            },
+            {
+                "phrase": " У понедельника есть только один недостаток — он наступает каждую неделю "
+            },
+            {
+                "phrase": " Никогда не смеши человека, который жуёт печеньку… подожди, пока он начнёт запивать её чаем! "
             }
         ]
     </script>
-
-    <style>
-      .outer: before {
-        display: inline - block;
-        height: 100%;
-        vertical - align: middle;
-      }
-
-      .inner {
-        display: inline-block;
-        vertical - align: middle;
-        text-align: center;
-        margin: auto;
-      }
-
-      .center {
-        text-align:center
-      }
-
-    </style>
-
 
 </head>
 <body>
@@ -59,8 +59,8 @@
       <div class="quote-background-cell">
         <div class="quote-background">
           <div class="quote-container">
-            <span class="quote-text" id="js-phrase"></span>
-            <span class="quote-text" id="js-signature"></span>
+            <p class="quote-text-phrase" id="js-phrase"></p>
+            <p class="quote-text-signature" id="js-signature"></p>
           </div>
         </div>
       </div>
@@ -88,18 +88,15 @@
             } else {
                 signature = "- " + signature;
             }
-
             var arrayQuote = [phrase, signature]
-
             return arrayQuote;
             }
 
         report = getObjectArray(jsonParseContent, randomNumber);
 
         function addQuote(report) {
-            alert(report);
             document.getElementById("js-phrase").textContent = report[0];
-            document.getElementById("js-signature").TextContent = report[1];
+            document.getElementById("js-signature").textContent = report[1];
         }
 
         addQuote(report);
