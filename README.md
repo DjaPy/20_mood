@@ -1,6 +1,7 @@
 # Site for the Mood
 
-[TODO. There will be project description]
+Sit comfortably in your chair and just [enjoy](https://djapy.github.io/20_mood/).
+Press F5.
 
 # Project Goals
 
