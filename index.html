@@ -81,11 +81,10 @@
 
         function getOneQuote(jokes, randomNumber) {
 
-            if ( typeof jokes[randomNumber]['signature'] === "undefined" ||
-             jokes[randomNumber]['signature'].length === 0 ) {
-                jokes[randomNumber]['signature'] = "";
+            if (jokes[randomNumber].signature) {
+                jokes[randomNumber].signature = "- " + jokes[randomNumber].signature;
             } else {
-                jokes[randomNumber]['signature'] = "- " + jokes[randomNumber]['signature'];
+                jokes[randomNumber].signature = "";
             }
 
             return jokes[randomNumber];
@@ -94,8 +93,8 @@
         report = getOneQuote(jokes, randomNumber);
 
         function addQuote(report) {
-            document.getElementById("js-phrase").textContent = report['phrase'];
-            document.getElementById("js-signature").textContent = report['signature'];
+            document.getElementById("js-phrase").textContent = report.phrase;
+            document.getElementById("js-signature").textContent = report.signature;
         }
 
         addQuote(report);
