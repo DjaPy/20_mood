@@ -68,41 +68,38 @@
 
     <script>
         var jsonQuotes = document.getElementById("quotes_json");
-        var jsonParseContent = JSON.parse(quotes_json.textContent);
-        var contentLength = jsonParseContent.length;
+        var jokes = JSON.parse(quotes_json.textContent);
+        var contentLength = jokes.length;
 
 
-        function getRandomNumber() {
-            return Math.floor(Math.random() * (contentLength - 0)) + 0;
+        function getRandomNumber(min, max) {
+            var rand = min + Math.random() * (max + 1 - min);
+            return Math.floor(rand);
         }
 
-        var randomNumber = getRandomNumber();
+        var randomNumber = getRandomNumber(contentLength, 0);
 
-        function getObjectArray(jsonParseContent, randomNumber) {
-            var quote = jsonParseContent[randomNumber];
-            var phrase = quote["phrase"];
-            var signature = quote["signature"];
+        function getOneQuote(jokes, randomNumber) {
 
-            if (typeof signature === "undefined") {
-                signature = "";
+            if ( typeof jokes[randomNumber]['signature'] === "undefined" ||
+             jokes[randomNumber]['signature'].length === 0 ) {
+                jokes[randomNumber]['signature'] = "";
             } else {
-                signature = "- " + signature;
-            }
-            var arrayQuote = [phrase, signature]
-            return arrayQuote;
+                jokes[randomNumber]['signature'] = "- " + jokes[randomNumber]['signature'];
             }
 
-        report = getObjectArray(jsonParseContent, randomNumber);
+            return jokes[randomNumber];
+            }
+
+        report = getOneQuote(jokes, randomNumber);
 
         function addQuote(report) {
-            document.getElementById("js-phrase").textContent = report[0];
-            document.getElementById("js-signature").textContent = report[1];
+            document.getElementById("js-phrase").textContent = report['phrase'];
+            document.getElementById("js-signature").textContent = report['signature'];
         }
 
         addQuote(report);
      </script>
-
-
 
 </body>
 </html>
